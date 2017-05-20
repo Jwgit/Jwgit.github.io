@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Jing</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://Jwgit.github.io/"/>
+  <updated>2017-05-20T07:53:21.000Z</updated>
+  <id>http://Jwgit.github.io/</id>
+  
+  <author>
+    <name>Jing</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://Jwgit.github.io/2017/05/20/hello-world/"/>
+    <id>http://Jwgit.github.io/2017/05/20/hello-world/</id>
+    <published>2017-05-20T07:53:21.000Z</published>
+    <updated>2017-05-20T07:53:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>函数节流和函数防抖</title>
+    <link href="http://Jwgit.github.io/2017/05/05/throttle-debounce/"/>
+    <id>http://Jwgit.github.io/2017/05/05/throttle-debounce/</id>
+    <published>2017-05-05T09:00:35.000Z</published>
+    <updated>2017-05-20T15:38:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>函数节流：指定时间间隔内只允许执行一次任务</p>
+<p>函数防抖：任务触发频繁的情况下，只有任务触触发的时间超过指定时间间隔的时候，任务才开始执行</p>
+</blockquote>
+<a id="more"></a>
+<h5 id="函数节流-throttle"><a href="#函数节流-throttle" class="headerlink" title="函数节流(throttle)"></a>函数节流(throttle)</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, interval = <span class="number">300</span></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> canRun = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!canRun) <span class="keyword">return</span>;</div><div class="line">        canRun = <span class="literal">false</span>;</div><div class="line">        setTimeout(() = &gt; &#123;</div><div class="line">            fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">            canRun = <span class="literal">true</span>;</div><div class="line">        &#125;, interval);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>函数的节流就是通过闭包保存一个标记（<code>canRun = true</code>）在函数开始的时候判断这个标记是否为<code>true</code> ， 如果为<code>true</code>则继续执行函数，否则return掉。判断完后修改这个标记为<code>false</code> ，然后把外部的传入函数的执行包在一个<code>setTimeout</code>中，最后在<code>setTimeout</code>执行完后把这个标记设置为true,表示可以下一次循环了。当定时器还未执行的时候，标记始终为false,在开始判断的时候就被return掉</p>
+<h5 id="函数防抖-debounce"><a href="#函数防抖-debounce" class="headerlink" title="函数防抖(debounce)"></a>函数防抖(debounce)</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, interval = <span class="number">300</span></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> timeout = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        clearTimeout(timeout);</div><div class="line">        timeout = setTimeout(() = &gt; &#123;</div><div class="line">            fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">        &#125;, interval);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>函数防抖就是通过闭包保存一个标记保存<code>setTimeout</code> 返回的值，当多次调用的时候，都会把前面的一个<code>setTimeout</code> clear掉，然后重新创建一个新的<code>setTimeout</code> ，这样保证在interval内就不会多次触发fn函数。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;函数节流：指定时间间隔内只允许执行一次任务&lt;/p&gt;
+&lt;p&gt;函数防抖：任务触发频繁的情况下，只有任务触触发的时间超过指定时间间隔的时候，任务才开始执行&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
